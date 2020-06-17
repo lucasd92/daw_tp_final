@@ -4,6 +4,11 @@ El proyecto es una aplicación WEB desarrollada como trabajo final de la materia
 
 Consiste en un Front-End hecho con HTML y CSS (materialize) y el Back-End mayormente programado en Typescript pero las consultas a la base de datos MySQL son realizadas en Node-JS.
 
+La aplicación genera una lista de dispositivos de forma dinámica haciendo una consulta a la base de datos. De esta forma permite filtrar según sea del tipo lámpara o persiana.
+También es posible almacenar el estado de los switches.
+
+Para que sea más simple la detección de errores y el entendimiento del funcionamiento, cada operación es impresa por consola. En Chrome se puede encontrar en Opciones(los 3 puntos)--> More tools --> Developer Tools y por último en la pestaña console.
+
 # Captura de pantalla de la aplicación
 ![Alt text](./doc/Front-End.png?raw=true "Front-End")
 
