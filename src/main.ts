@@ -85,12 +85,15 @@ class Main implements GETResponseListener, EventListenerObject, POSTResponseList
         switch(el.id){
             case "bt_all":
                 console.log("click en botón:"+el.id);
+                this.myf.requestGET("ws/devices?filter=0",this);
                 break;
             case "bt_luz":
                 console.log("click en botón:"+el.id);
+                this.myf.requestGET("ws/devices?filter=1",this);
                 break;
             case "bt_per":
                 console.log("click en botón:"+el.id);
+                this.myf.requestGET("ws/devices?filter=2",this);
                 break;
             default:
                 console.log("click en device:"+el.id);
@@ -128,7 +131,7 @@ class Main implements GETResponseListener, EventListenerObject, POSTResponseList
 
       this.view = new ViewMainPage(this.myf);
 
-      this.myf.requestGET("devices",this);
+      this.myf.requestGET("ws/devices",this);
 
 
       //Asigno Handler al evento click del botón bt_all  

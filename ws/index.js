@@ -7,7 +7,8 @@ app.use(express.static('.')); // para servir archivos estaticos
 
 
 //EJ 12
-app.get('/devices', function(req, res, next) {
+/*
+app.get('/ws/devices', function(req, res, next) {
     mysql.query('SELECT * FROM Devices', function(err, rta, field) {
         if (err) {
             res.send(err).status(400);
@@ -15,9 +16,29 @@ app.get('/devices', function(req, res, next) {
         }
         res.send(rta).status(200);
     });
-});
+});*/
 app.get('/devices/:id', function(req, res, next) {
     mysql.query('SELECT * FROM Devices WHERE id=?', [req.params.id], function(err, rta, field) {
+        if (err) {
+            res.send(err).status(400);
+            return;
+        }
+        res.send(rta);
+    });
+});
+app.get('/ws/devices', function(req, res, next) {
+    var typ = '';
+    switch(req.query.filter){
+        case '1':
+            typ = ' WHERE type=0';
+             break;
+        case '2':
+            typ = ' WHERE type=1';
+            break;
+        default:
+            break;
+    }
+    mysql.query('SELECT * FROM Devices '+typ, function(err, rta, field) {
         if (err) {
             res.send(err).status(400);
             return;
