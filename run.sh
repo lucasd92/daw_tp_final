@@ -13,12 +13,12 @@ while getopts ":ip:j:hv:c:" optname
   do
     case "$optname" in
       "h")
-        echo "Script para instalar contenedores docker y corer aplicación WEB"
-        echo "-i          : Instalar docker y sus dependencias"
-        echo "-c          : Instalar contenedores necesarios"
-        echo "-v  [opcion]: version de ubuntu (soportados 18,17,16 y 14)"
-        echo "-p  [opcion]: Puerto para el servidor PHPMyAdmin. Por defecto 8085"
-        echo "-j  [opcion]: Puerto para el servidor NodeJS. Por defecto 8000"
+        echo "Script para instalar contenedores docker y corer aplicación WEB."
+        echo "-i          : Instalar docker y sus dependencias."
+        echo "-c          : Instalar contenedores necesarios."
+        echo "-v  [opcion]: version de ubuntu (soportados 20, 19, 18,17,16 y 14). Por defecto 18."
+        echo "-p  [opcion]: Puerto para el servidor PHPMyAdmin. Por defecto 8085."
+        echo "-j  [opcion]: Puerto para el servidor NodeJS. Por defecto 8000."
         exit
         ;;
       "v")
@@ -59,6 +59,14 @@ while getopts ":ip:j:hv:c:" optname
 
 
 #Selecciono el nombre de la distribución segun la version
+if [ $VERS = 20 ] 
+then
+ SABOR="focal"
+fi
+if [ $VERS = 19 ] 
+then
+ SABOR="eoan"
+fi
 if [ $VERS = 17 ] 
 then
  SABOR="artful"
