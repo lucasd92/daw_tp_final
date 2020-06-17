@@ -20,6 +20,8 @@ services:
         restart: always
         environment:
             PMA_HOST: mysql-server
+            PMA_PORT:             3306
+            MYSQL_ROOT_PASSWORD:  userpass
         networks:
         - mysql-net
         ports:
@@ -37,7 +39,7 @@ services:
         -  mysql-net
         ports:
         - "8000:3000"
-        
+        command:  nodemon ws/index.js
 
 networks:
     mysql-net:

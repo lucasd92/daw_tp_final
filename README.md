@@ -49,6 +49,10 @@ También puede correr la aplicación con:
 docker-compose up
 ```
 
+Para detener la aplicación ejecutar:
+```sh
+docker-compose down
+```
 
 # Contribuir
 Para contribuir realizar un pull request con las sugerencias.
