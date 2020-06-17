@@ -1,47 +1,44 @@
-version:​ ​ '3'
+version: '3'
 services:
-
     mysql-server:
         image: mysql:5.7
         hostname: mysql-server
         container_name: mysql-server
-        restart:​ ​ always
+        restart: always
         environment:
-        MYSQL_ROOT_PASSWORD: userpass
+            MYSQL_ROOT_PASSWORD: userpass
         volumes:
-            ./db/dumps:/docker-entrypoint-initdb.d 
-            ./db/data:/var/lib/mysql
+        - ./db/dumps:/docker-entrypoint-initdb.d 
+        - ./db/data:/var/lib/mysql
         networks:
         - mysql-net
 
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        hostname: phpmyadmin
+        container_name: phpmyadmin
+        restart: always
+        environment:
+            PMA_HOST: mysql-server
+        networks:
+        - mysql-net
+        ports:
+        - "8085:80"
 
     node-app:
         image: abassi/nodejs-server:10.0-dev
         hostname: nodejs-container
         container_name: nodejs-container
-        restart:​ ​ always
-        environment:
-        ENV_VAR:​ ​ value
+        restart: always
         volumes:
-            .:/home/node/app
-            #/home/node/app/ws/index.js
+        -  .:/home/node/app
+        #/home/node/app/ws/index.js
         networks:
-            - mysql-net
+        -  mysql-net
         ports:
-        -​ ​ "8000:3000"
+        - "8000:3000"
         
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin
-        hostname: phpmyadmin
-        container_name: phpmyadmin
-        restart:​ ​ always
-        environment:
-        PMA_HOST: mysql-server
-        networks:
-        -​ mysql-net
-        ports:
-        -​ ​ "8085:80"
-        
-    networks:
-        net-web-app:
-        driver:​ ​ bridge
+
+networks:
+    mysql-net:
+        driver: bridge

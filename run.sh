@@ -105,6 +105,7 @@ echo "Actualizando repositorios"
 sudo apt-get update
 echo "Instalando docker"
 sudo apt-get install docker-ce
+sudo apt-get install docker-compose
 echo "Agregando usuario al grupo docker"
 sudo usermod -aG docker $USER
 sudo gpasswd -a $USER docker
