@@ -76,13 +76,27 @@ class Main implements GETResponseListener, EventListenerObject, POSTResponseList
     myf:MyFramework;
     view:ViewMainPage;
 
+    //Administro la acción de los botones y switches ante un click
     handleEvent(evt:Event):void
     {
-        let sw: HTMLElement = this.myf.getElementByEvent(evt);
-        console.log("click en device:"+sw.id);
+        let el: HTMLElement = this.myf.getElementByEvent(evt);
+        
 
-        let data:object = {"id":sw.id,"state":this.view.getSwitchStateById(sw.id)};
-        this.myf.requestPOST("devices",data,this);
+        switch(el.id){
+            case "bt_all":
+                console.log("click en botón:"+el.id);
+                break;
+            case "bt_luz":
+                console.log("click en botón:"+el.id);
+                break;
+            case "bt_per":
+                console.log("click en botón:"+el.id);
+                break;
+            default:
+                console.log("click en device:"+el.id);
+                let data:object = {"id":el.id,"state":this.view.getSwitchStateById(el.id)};
+                this.myf.requestPOST("devices",data,this);
+        } 
     }
 
     handleGETResponse(status:number,response:string):void{
@@ -115,6 +129,20 @@ class Main implements GETResponseListener, EventListenerObject, POSTResponseList
       this.view = new ViewMainPage(this.myf);
 
       this.myf.requestGET("devices",this);
+
+
+      //Asigno Handler al evento click del botón bt_all  
+      let bt:HTMLElement = this.myf.getElementById("bt_all");
+      bt.addEventListener("click",this); 
+      
+      //Asigno Handler al evento click del botón bt_luz  
+      bt = this.myf.getElementById("bt_luz");
+      bt.addEventListener("click",this); 
+
+      //Asigno Handler al evento click del botón bt_per 
+      bt= this.myf.getElementById("bt_per");
+      bt.addEventListener("click",this); 
+
     } 
 } 
  
