@@ -1,7 +1,11 @@
 Autor: Lucas Dórdolo - 2020
 # Introduccion
-El proyecto es una aplicación WEB desarrollada como trabajo final de la materia Desarrollo de Aplicaciones WEB en el marco del curso en especialización en Internet de las cosas de de FI-UBA
+El proyecto es una aplicación WEB desarrollada como trabajo final de la materia Desarrollo de Aplicaciones WEB en el marco del curso en especialización en Internet de las cosas de de FI-UBA.
+
 Consiste en un Front-End hecho con HTML y CSS (materialize) y el Back-End mayormente programado en Typescript pero las consultas a la base de datos MySQL son realizadas en Node-JS.
+
+# Captura de pantalla de la aplicación
+![Alt text](./doc/Front-End.png?raw=true "Front-End")
 
 # Correr la aplicación
 Para correr la aplicación es necesario clonar el repositorio en la ubicación deseada:
@@ -38,6 +42,7 @@ En ese caso se utilizarán los puertos por defecto. Si quisiera modificarlos pue
 ./run.sh -p 8085 -j 8000
 ```
 Donde -p identifica el puerto del servidor PHPMyAdmin y -j el puerto del servidor NodeJS.
+La aplicación WEB se levanta en http://localhost:8000 o el puerto seleccionado y el servidor PHPMyAdmin se accede desde http://localhost:8085 con usuario root y contraseña userpass 
 
 También puede correr la aplicación con:
 ```sh

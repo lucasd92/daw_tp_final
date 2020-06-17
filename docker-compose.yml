@@ -30,10 +30,10 @@ services:
         ports:
         -​ ​ "8000:3000"
         
-    phpadmin:
+    phpmyadmin:
         image: phpmyadmin/phpmyadmin
-        hostname: phpadmin
-        container_name: phpadmin
+        hostname: phpmyadmin
+        container_name: phpmyadmin
         restart:​ ​ always
         environment:
         PMA_HOST: mysql-server
