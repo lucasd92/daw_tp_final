@@ -26,6 +26,8 @@ services:
         - mysql-net
         ports:
         - "8085:80"
+        depends_on:
+        -   mysql-server
 
     node-app:
         image: abassi/nodejs-server:10.0-dev
@@ -37,6 +39,8 @@ services:
         #/home/node/app/ws/index.js
         networks:
         -  mysql-net
+        depends_on: 
+        -   mysql-server
         ports:
         - "8000:3000"
         command:  nodemon ws/index.js
