@@ -8,8 +8,8 @@ VERS=18
 SABOR="bionic"
 
 echo "Para ayuda, ejecuta ./run.sh -h"
-echo "OPTIND inicia en $OPTIND"
-while getopts ":ip:j:hv:c:" optname
+#echo "OPTIND inicia en $OPTIND"
+while getopts ":ip:j:hv:c" optname
   do
     case "$optname" in
       "h")
@@ -54,7 +54,7 @@ while getopts ":ip:j:hv:c:" optname
         echo "Error desconocido mientras se procesaban las opciones"
         ;;
     esac
-    echo "OPTIND ahora es $OPTIND"
+    #echo "OPTIND ahora es $OPTIND"
   done
 
 
@@ -129,6 +129,8 @@ echo "Instalando MySQL"
 docker pull mysql:5.7
 echo "Instalando PHPMyAdmin"
 docker pull phpmyadmin/phpmyadmin
+echo "Fin"
+exit
 fi
 
 
